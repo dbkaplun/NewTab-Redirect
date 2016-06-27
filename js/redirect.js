@@ -26,6 +26,8 @@
                         iframe.src = url;
                         document.body.style.overflow = 'hidden';
                         document.body.appendChild(iframe);
+
+                        document.querySelector('link[rel="icon"]').href = `chrome://favicon/${url}`;
                         break;
                 }
             } else {
