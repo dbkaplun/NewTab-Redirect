@@ -26,6 +26,15 @@
                         iframe.src = url;
                         document.body.style.overflow = 'hidden';
                         document.body.appendChild(iframe);
+
+                        window.addEventListener('message', evt => {
+                            if (evt.source !== iframe.contentWindow) return;
+                            switch (evt.data.type) {
+                                case 'NewTab-Redirect:iframe:postTitle':
+                                    document.title = evt.data.data;
+                                    break;
+                            }
+                        });
                         break;
                 }
             } else {

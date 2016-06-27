@@ -4,10 +4,15 @@
   "short_name": "NTR!",
   "description": "Allows a user to provide the URL of the page that loads in a new tab.",
   "version": "3.1.4",
-  "background": { 
+  "background": {
     "scripts" : ["js/background.js"],
     "persistent": false
   },
+  "content_scripts": [{
+    "matches": ["*://*/*"],
+    "js": ["js/iframe.js"],
+    "all_frames": true
+  }],
   "options_page":"options.html",
   "chrome_url_overrides": {
     "newtab": "main.html"
